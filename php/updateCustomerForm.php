@@ -1,16 +1,16 @@
-
-
 <?php
-include "database.php";
+include "database.php"; 
+
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 $parts = parse_url($actual_link);
 parse_str($parts['query'], $query);
 $update_id = $query['id'];
 
-$result =mysqli_query($connect, "select * from Customer where id = $update_id ");
+// select a record based on id
+$sql = "select * from customer where id = $update_id ";
 
-if(mysqli_affected_rows($connect)>0){
+$result = $conn->query($sql);
 	
 ?>
 
@@ -29,7 +29,12 @@ if(mysqli_affected_rows($connect)>0){
 	
 		<div id="container">
 			<h3>Update Customer</h3>
-			<?php while($row = mysqli_fetch_array($result)):?>
+			
+			<?php if ($result->num_rows > 0) {
+					// output data of each row
+					while($row = $result->fetch_assoc()) {
+
+				?>
 			
 			<form method ="post" action ="updateCustomer.php?id=<?php echo $row["id"];?>">
 				<table>
@@ -51,9 +56,13 @@ if(mysqli_affected_rows($connect)>0){
 									<td><label></label> </td>
 									<td> <input type="submit" value="Save" class="save"/> </td>
 								</tr>
-						<?php 
-							endwhile; 
-						?>
+			<?php 
+				 }
+			} else {
+				echo "0 results";
+			}
+			$conn->close();
+			?>
 					</tbody>
 				</table>
 			
@@ -67,11 +76,4 @@ if(mysqli_affected_rows($connect)>0){
 </body>
 </html>
 
-
-<?php	
-}else{
-	echo 'Customer not Updated';
-}
-
-?>
 

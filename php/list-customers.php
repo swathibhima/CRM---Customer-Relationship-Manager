@@ -1,10 +1,10 @@
-<?php
-include "database.php";
-if(mysqli_connect_errno($connect)){
-	//include "list-customers.php";	
-}
 
-$result =mysqli_query($connect, "select * from Customer");
+<?php
+include "database.php";  
+
+$sql = "select * from customer";
+
+$result = $conn->query($sql);
 
 ?>
 <!DOCTYPE html>
@@ -36,7 +36,11 @@ $result =mysqli_query($connect, "select * from Customer");
 					<th>Action </th>
 				</tr>
 				
-				<?php while($row = mysqli_fetch_array($result)):?>
+				<?php if ($result->num_rows > 0) {
+						// output data of each row
+						while($row = $result->fetch_assoc()) {
+				
+				?>
 				
 					<tr>
 						<td><?php echo $row["first_name"];?></td>
@@ -44,20 +48,21 @@ $result =mysqli_query($connect, "select * from Customer");
 						<td><?php echo $row["email"];?></td>
 						
 						<td>
-						<?php 
-							$row_id=$row['id'];
-						?>
 							<!-- display the update link -->
-							<a href="updateCustomerForm.php?id=<?php echo $row_id; ?>">Update</a>
+							<a href="updateCustomerForm.php?id=<?php echo $row['id']; ?>">Update</a>
 							|
-							<a href="deleteCustomer.php?id=<?php echo $row_id; ?>"
+							<a href="deleteCustomer.php?id=<?php echo $row['id']; ?>"
 								onclick="if(!confirm('Are you sure you want to delete this customer?')) return false">Delete</a>
 							
 						</td>
 						
 					</tr>
 		<?php 
-			endwhile; 
+			 }
+		} else {
+			echo "0 results";
+		}
+		$conn->close();
 		?>
 
 			</table>
