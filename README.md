@@ -8,6 +8,6 @@ This is a simple CRM application to preform all the below operations(CRUD)
   <li>Delete a customer</li>
 </ol>
 
-This application is deployed in AWS server, here is the link to access and permorm all operations.<br>
+This application is deployed in AWS server, here is the link to access and permorm all CRUD operations.<br>
 
 http://crmapp-env.us-west-1.elasticbeanstalk.com/list-customers.php
