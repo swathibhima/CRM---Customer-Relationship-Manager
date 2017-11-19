@@ -1,4 +1,4 @@
-CRM - Customer Relationship Manager project created using PHP, MySQL and CSS
+<h1>CRM - Customer Relationship Manager project created using PHP, MySQL and CSS </h1>
 
 This is a simple CRM application to preform all the below operations(CRUD)
 
@@ -7,5 +7,6 @@ This is a simple CRM application to preform all the below operations(CRUD)
 3) Update a Customer
 4) Delete a customer
 
-This application is deployed in AWS server, here is the link to access and permorm all operations.
+This application is deployed in AWS server, here is the link to access and permorm all operations.<br>
+
 http://crmapp-env.us-west-1.elasticbeanstalk.com/list-customers.php
