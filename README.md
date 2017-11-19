@@ -1,11 +1,12 @@
 <h1>CRM - Customer Relationship Manager project created using PHP, MySQL and CSS </h1>
 
 This is a simple CRM application to preform all the below operations(CRUD)
-
-1) List Customers
-2) Add a new Customer
-3) Update a Customer
-4) Delete a customer
+<ol>
+  <li> List Customers</li>
+  <li>Add a new Customer</li>
+  <li>Update a Customer</li>
+  <li>Delete a customer</li>
+</ol>
 
 This application is deployed in AWS server, here is the link to access and permorm all operations.<br>
 
